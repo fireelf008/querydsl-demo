@@ -1,0 +1,46 @@
+server:
+  port: 8091
+  servlet:
+    session:
+      timeout: 120m
+logging:
+  file:
+    name: ./log/${spring.application.name}.log
+spring:
+  application:
+    name: 'querydsl-demo'
+  aop:
+    auto: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wsf?autoReconnect=true&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT&autoReconnect=true&rewriteBatchedStatements=true&useConfigs=maxPerformance
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 100
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+      date: yyyy-MM-dd
+      time: HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  devtools:
+    restart:
+      enabled: true
